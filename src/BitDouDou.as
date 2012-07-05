@@ -118,6 +118,14 @@ package
 		
 		protected function generateBeans():void
 		{
+			if(beanArr.length > 0)
+			{
+				for each(var b:Bean in beanArr)
+				{
+					removeChild(b);
+				}
+				beanArr = [];
+			}
 			while(beanArr.length < 200)
 			{
 				//随机0-19的整数，然后乘以方格宽度(中心点在左上角)
@@ -314,6 +322,7 @@ package
 			remainingTime = 60;
 			gameTimer.start();
 			gameState = STATE_PLAY;
+			generateBeans();
 		}
 		
 	}
